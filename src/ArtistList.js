@@ -12,17 +12,19 @@ export default class ArtistList extends React.Component {
  
 
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-       
-    const artist ={
-      imagen_goku: 'https://img.europapress.es/fotoweb/fotonoticia_20180210183601_640.jpg',
-      name: 'Goku-doctrina egoista',
-      likes: 200,
-      comments: 140,
-    }
-    
+      
+      
     this.state = {
       dataSource: ds.cloneWithRows(props.artists)
     };
+  }
+  componentWillReceiveProps(newProps){
+      if(newProps.artists !== this.props.artists){
+          this.setState ({
+              dataSource:this.state.dataSource.cloneWithRows(newProps.artists)
+          })
+
+      }
   }
 
   render() {

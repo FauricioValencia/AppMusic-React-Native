@@ -11,19 +11,18 @@ import ArtistList from './ArtistList'
 import {getArtists} from './api-client'
 
 export default class App extends React.Component {
+  state = {
+    artists:[],
+  }
   componentDidMount(){
     getArtists()
-    .then(data=>console.warn('en app',data))
+    .then(data  => this.setState({  artists:data  }))
   }
   
     render() {
-      const artist ={
-        imagen_goku: 'https://img.europapress.es/fotoweb/fotonoticia_20180210183601_640.jpg',
-        name: 'Goku-doctrina egoista',
-        likes: 200,
-        comments: 140,
-      }
-      const artists  = Array(500).fill(artist);
+      const artists = this.state.artists;
+      console.warn('artists: ', artists);
+      
     return (
       <View style= {styles.container}>
      <ArtistList artists={artists}/>
