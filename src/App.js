@@ -21,7 +21,7 @@ export default class App extends React.Component {
   
     render() {
       const artists = this.state.artists;
-      console.warn('artists: ', artists);
+      //console.warn('artists: ', artists);
       
     return (
       <View style= {styles.container}>
